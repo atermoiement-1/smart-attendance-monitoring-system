@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">School / College</p>
+          <h1>Smart Attendance Monitoring System</h1>
+        </div>
+        <div class="date-control">
+          <label for="reportDate">Date</label>
+          <input id="reportDate" type="date" />
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="metric">
+          <span>Total Students</span>
+          <strong id="totalStudents">0</strong>
+        </article>
+        <article class="metric present">
+          <span>Present</span>
+          <strong id="presentCount">0</strong>
+        </article>
+        <article class="metric absent">
+          <span>Absent</span>
+          <strong id="absentCount">0</strong>
+        </article>
+        <article class="metric">
+          <span>Last Scan</span>
+          <strong id="lastScan">-</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="camera-panel">
+          <div class="video-wrap">
+            <video id="camera" autoplay playsinline muted></video>
+            <canvas id="overlay"></canvas>
+          </div>
+          <div class="camera-actions">
+            <button id="startCamera" class="primary"><i data-lucide="camera"></i><span>Camera</span></button>
+            <button id="startRecognition"><i data-lucide="scan-face"></i><span>Start</span></button>
+            <button id="stopRecognition"><i data-lucide="square"></i><span>Stop</span></button>
+            <button id="captureSample"><i data-lucide="badge-plus"></i><span>Sample</span></button>
+          </div>
+          <p id="statusLine" class="status-line">Camera is waiting.</p>
+        </div>
+
+        <aside class="side-panel">
+          <div class="tabs">
+            <button class="tab active" data-tab="students">Students</button>
+            <button class="tab" data-tab="attendance">Attendance</button>
+          </div>
+
+          <div id="studentsTab" class="tab-body active">
+            <form id="studentForm" class="student-form">
+              <input name="name" placeholder="Student name" required />
+              <input name="roll_no" placeholder="Roll number" required />
+              <input name="class_name" placeholder="Class / section" required />
+              <input name="email" type="email" placeholder="Parent email" />
+              <input name="phone" placeholder="Parent phone with country code" />
+              <button class="primary" type="submit"><i data-lucide="user-plus"></i><span>Add Student</span></button>
+            </form>
+            <select id="studentSelect"></select>
+            <div id="studentList" class="list"></div>
+          </div>
+
+          <div id="attendanceTab" class="tab-body">
+            <div class="export-actions">
+              <a id="excelExport" class="button-link" href="#"><i data-lucide="file-spreadsheet"></i><span>Excel</span></a>
+              <a id="pdfExport" class="button-link" href="#"><i data-lucide="file-text"></i><span>PDF</span></a>
+              <button id="sendAlerts"><i data-lucide="send"></i><span>Alerts</span></button>
+            </div>
+            <div id="attendanceList" class="list"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+Flask==3.0.3
+opencv-python==4.10.0.84
+numpy==2.1.1
+pandas==2.2.2
+openpyxl==3.1.5
+reportlab==4.2.2
+python-dotenv==1.0.1
+twilio==9.2.3
