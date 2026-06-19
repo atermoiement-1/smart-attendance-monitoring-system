@@ -1,17 +1,50 @@
-# Smart Attendance Monitoring System
+# Face Recognition Attendance System
 
-A browser-based face recognition attendance system for schools and colleges.
+<p align="center">
+  <img src="https://img.shields.io/badge/Backend-Flask-0f172a?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/Computer%20Vision-OpenCV-2563eb?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV" />
+  <img src="https://img.shields.io/badge/Database-SQLite-0369a1?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Reports-Excel%20%7C%20PDF-16a34a?style=for-the-badge" alt="Reports" />
+</p>
 
-## Features
+A browser-based attendance system that uses face detection and recognition to automate student attendance. It includes student enrollment, webcam-based recognition, attendance records, report exports, and absentee alerts.
 
-- Auto face detection and recognition from webcam frames
+## Highlights
+
 - Student enrollment with multiple face samples
+- Webcam-based face detection and recognition
 - Real-time attendance dashboard
 - Excel and PDF attendance export
 - Email and SMS absentee alerts
-- SQLite database storage
+- SQLite-backed local data storage
+- Lightweight approach that runs without GPU-heavy dependencies
 
-## Setup
+## Tech Stack
+
+| Area | Tools |
+| --- | --- |
+| Backend | Python, Flask |
+| Computer Vision | OpenCV, NumPy |
+| Data and Reports | Pandas, openpyxl, ReportLab |
+| Database | SQLite |
+| Notifications | Email, Twilio SMS |
+| Frontend | HTML, CSS, JavaScript |
+
+## Project Structure
+
+```text
+smart-attendance-monitoring-system/
+|-- app.py
+|-- face_engine.py
+|-- alerts.py
+|-- requirements.txt
+|-- templates/
+|-- static/
+|-- data/
+|   |-- samples/
+```
+
+## Getting Started
 
 ```powershell
 python -m venv .venv
@@ -21,16 +54,24 @@ copy .env.example .env
 python app.py
 ```
 
-Open `http://127.0.0.1:5000`.
+Open:
 
-## How to Use
+```text
+http://127.0.0.1:5000
+```
 
-1. Add a student with roll number, class, email, and phone.
-2. Select the student and capture 5-10 clear face samples.
-3. Click Start Recognition to mark attendance automatically.
-4. Use Export Excel or Export PDF for reports.
-5. Use Send Absentee Alerts after configuring `.env`.
+## Usage Flow
 
-## Notes
+1. Add a student with roll number, class, email, and phone number.
+2. Capture 5-10 clear face samples for enrollment.
+3. Start recognition to mark attendance automatically.
+4. Export attendance reports in Excel or PDF.
+5. Send absentee alerts after configuring environment variables.
 
-This project uses OpenCV Haar face detection and a lightweight grayscale face embedding matcher so it runs without GPU or heavy native face-recognition dependencies. For production, use consent-based enrollment, secure storage, access controls, and a stronger face embedding model.
+## Interview Talking Points
+
+- How OpenCV Haar detection is used for face localization
+- Why multiple enrollment samples improve recognition reliability
+- How attendance data is stored and exported
+- How absentee alert workflows can support school/college administration
+- Production considerations: consent, privacy, secure storage, access control, and stronger embeddings
